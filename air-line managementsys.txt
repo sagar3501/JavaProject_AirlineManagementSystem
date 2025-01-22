@@ -1,0 +1,26 @@
+						"Air-Line Management System"
+
+Here we can use Singelton pattern:
+
+It has Centralized Control, Global Access,Resources management.
+
+we can use microservices arch to fetch avaliability of flights.
+
+
+
+->API Gateway
+  An API Gateway is a single entry point for clients (mobile apps, web apps, etc.) to interact with the microservices. 
+  The API Gateway is responsible for routing requests to the appropriate microservices and can also handle additional functionality like 
+  authentication, rate limiting, logging, and more.
+
+  API Gateway: You can use Spring Cloud Gateway or Zuul as the API Gateway.
+  This helps reduce the number of direct interactions between clients and services and can aggregate responses from multiple microservices 
+into a single response.
+
+-> explaining the flow:
+	A user requests to book a flight.
+	The API Gateway routes the request to the Booking Service.
+	The Booking Service checks flight availability and confirms the booking.
+	If payment is required, the Booking Service calls the Payment Service via its API.
+	The Payment Service processes the payment and returns the result to the Booking Service.
+	The Booking Service notifies the Notification Service, which sends a confirmation to the passenger.
